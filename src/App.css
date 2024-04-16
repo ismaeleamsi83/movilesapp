@@ -2,14 +2,38 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 header{
+    position: relative;
     height: 200px;
     background-image: url('/img/background-header.jpg');
-    overflow: hidden;
+    /* overflow: hidden; */
     display: flex;
     align-items: center;
     h1{
         margin-left: 3rem;
     }
+    .icon-carrito{
+        position: absolute;
+        right: 32px;
+        bottom: 32px;
+        width: 42px;
+    }
+    .carrito{
+        display: none;
+        position: absolute;
+        right: 32px;
+        top: 165px;
+        z-index: 2;
+        background-color: aliceblue;
+        box-shadow: 2px 2px 6px gainsboro;
+        padding: 16px;
+        table{
+            border-spacing: 12px;
+        }
+    }
+    .icon-carrito:hover  ~ .carrito, .carrito:hover{
+        display: block;
+    }
+    
 }
 
 .body-content{
@@ -30,7 +54,7 @@ header{
     padding: 0 16px;
 }
 .item{
-    max-width: 200px;
+    max-width: 250px;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -46,9 +70,10 @@ header{
         margin-top: auto;
     }
     button{
-        background-color: rgb(27, 27, 27);
+        background-color: rgb(27, 16, 70);
         color: rgb(236, 236, 236);
         font-weight: 600;
         padding: 8px 0;
+        font-size: 18px;
     }
 }
