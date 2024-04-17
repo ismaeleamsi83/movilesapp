@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -11,6 +11,7 @@ function App() {
 
   const [data] = useState(db)
   const [cart, setCart] = useState([])
+
 
   function addPhone(item){
 
@@ -31,10 +32,17 @@ function App() {
     
   }
 
+  function removePhone(id){
+    console.log('remove', id)
+    const  filtredPhones = cart.filter((phone)=> phone.id !== id )
+    setCart(filtredPhones)
+  }
+
   return (
     <>
       <Header 
         cart={cart}
+        removePhone={removePhone}
       />
       <Body
 

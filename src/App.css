@@ -32,6 +32,17 @@ header{
             img{
                 width: 30px;
             }
+            .but-remove{
+                background-color: rgb(190, 0, 0);
+                color: white;
+                padding: 2px 8px;
+                margin: 0 auto;
+                border-radius: 4px;
+            }
+            .but-remove:hover{
+                opacity: 0.8;
+                cursor: pointer;
+            }
         }
     }
     .icon-carrito:hover  ~ .carrito, .carrito:hover{

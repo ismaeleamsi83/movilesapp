@@ -1,7 +1,19 @@
 
 
-export function Header({cart}){
+export function Header({cart, removePhone}){
     console.log(cart)
+
+    
+    let totalPrice = 0
+    if(cart.length != 0){
+        console.log('ok')
+        cart.map((element) => {
+            totalPrice = totalPrice + (element.precio * element.quantity)
+        });
+    }
+    
+
+    
     return(
         <>
             <header>
@@ -15,7 +27,7 @@ export function Header({cart}){
                             <th>Imagen</th>
                             <th>Nombre</th>
                             <th>Precio</th>
-                            <th>Cantidad</th>
+                            <th>Cant</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -25,8 +37,14 @@ export function Header({cart}){
                                     <td>{itemCart.titulo}</td>
                                     <td>{itemCart.precio}€</td>
                                     <td>{itemCart.quantity}</td>
+                                    <td><div onClick={()=>removePhone(itemCart.id)} className="but-remove">X</div></td>
                                 </tr>
                             ))}
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td colSpan="2">Total: {`${totalPrice} €`}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
