@@ -1,6 +1,7 @@
 
 
-export function Header(){
+export function Header({cart}){
+    console.log(cart)
     return(
         <>
             <header>
@@ -18,12 +19,14 @@ export function Header(){
                         </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>im</td>
-                                <td>Iphone</td>
-                                <td>$2000</td>
-                                <td>1</td>
-                            </tr>
+                            {cart.map((itemCart)=>(
+                                <tr key={itemCart.id}> 
+                                    <td><img src={itemCart.imagen_referencia} alt="" /></td>
+                                    <td>{itemCart.titulo}</td>
+                                    <td>{itemCart.precio}€</td>
+                                    <td>{itemCart.quantity}</td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
