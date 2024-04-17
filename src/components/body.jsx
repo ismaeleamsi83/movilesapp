@@ -12,7 +12,7 @@ export function Body({db, addPhone}){
                     <h3>{movil.titulo}</h3>
                     <p>{movil.descripcion}</p>
                     <span>{movil.precio}€</span>
-                    <button onClick={() => addPhone(movil.id)}>Agregar al Carrito</button>
+                    <button onClick={() => addPhone(movil)}>Agregar al Carrito</button>
                     {/* console.log("Movil: ", movil); */}
                 </div>
             ))}
