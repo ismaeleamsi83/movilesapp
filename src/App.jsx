@@ -5,12 +5,33 @@ import './App.css'
 import { Header } from './components/header'
 import { Body } from './components/body'
 import { db } from './data/db'
+import { Footer } from './components/footer'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const initialLocalStorage = ()=>{
+    const localStorageCart = localStorage.getItem('cart')
+    return  localStorageCart ? JSON.parse(localStorageCart) : []
+  }
 
   const [data] = useState(db)
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState(initialLocalStorage)
+
+  const MAX_PHONE = 5
+  const MIN_PHONE = 1
+
+  useEffect(() => {
+    const storedCart = localStorage.getItem('cart');
+    if (storedCart) {
+      setCart(JSON.parse(storedCart));
+    }
+  }, []);
+  
+  useEffect(()=>{
+    
+    localStorage.setItem('cart', JSON.stringify(cart))
+    
+  }, [cart]) 
 
 
   function addPhone(item){
@@ -33,9 +54,31 @@ function App() {
   }
 
   function removePhone(id){
-    console.log('remove', id)
     const  filtredPhones = cart.filter((phone)=> phone.id !== id )
     setCart(filtredPhones)
+  }
+
+  function  sumPhoneQuantity(id){
+    cart.forEach((phone)=>{
+      if (phone.id === id && phone.quantity < MAX_PHONE) {
+        phone.quantity ++
+      }
+    })
+    setCart([...cart]);
+  }
+
+  function restPhoneQuantity(id){
+    cart.forEach((phone)=>{
+      if (phone.id === id && phone.quantity > MIN_PHONE) {
+        phone.quantity -- 
+      }
+      setCart([...cart])
+    })
+  }
+
+  function removeAllCart(){
+    setCart([])
+    localStorage.removeItem('cart')
   }
 
   return (
@@ -43,6 +86,9 @@ function App() {
       <Header 
         cart={cart}
         removePhone={removePhone}
+        sumPhoneQuantity={sumPhoneQuantity}
+        restPhoneQuantity={restPhoneQuantity}
+        removeAllCart={removeAllCart}
       />
       <Body
 
@@ -50,6 +96,7 @@ function App() {
         addPhone={addPhone}
         
       className="body-content" />
+      <Footer />
     </>
   )
 }
