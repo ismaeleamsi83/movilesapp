@@ -89,6 +89,7 @@ function App() {
         sumPhoneQuantity={sumPhoneQuantity}
         restPhoneQuantity={restPhoneQuantity}
         removeAllCart={removeAllCart}
+        className="header-content"
       />
       <Body
 
@@ -96,7 +97,7 @@ function App() {
         addPhone={addPhone}
         
       className="body-content" />
-      <Footer />
+      <Footer className="footer-conter" />
     </>
   )
 }

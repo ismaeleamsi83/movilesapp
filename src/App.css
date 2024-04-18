@@ -1,8 +1,11 @@
 *{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 header{
     position: relative;
+    margin: 0 auto;
+    max-width: 1920px;
     height: 200px;
     background-image: url('/img/background-header.jpg');
     background-repeat: no-repeat;
